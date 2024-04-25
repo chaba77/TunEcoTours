@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="448.0" prefWidth="704.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controles.home">
+   <children>
+      <Label alignment="CENTER" graphicTextGap="8.0" layoutX="188.0" layoutY="134.0" prefHeight="47.0" prefWidth="141.0" text="HELLO" textFill="#184e0c">
+         <font>
+            <Font name="HoboStd" size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="emailLabel" layoutX="354.0" layoutY="139.0" prefHeight="36.0" prefWidth="346.0" text="email" textFill="#6e8978">
+         <font>
+            <Font name="HoboStd" size="24.0" />
+         </font></Label>
+      <Button layoutX="569.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" prefHeight="47.0" prefWidth="127.0" style="-fx-background-color: #BDCEC4; -fx-background-radius: 10000;" text="Lougout" textFill="#2b4836">
+         <font>
+            <Font name="Gill Sans Ultra Bold" size="12.0" />
+         </font></Button>
+      <Button layoutX="14.0" layoutY="333.0" mnemonicParsing="false" onAction="#deleteAccount" prefHeight="101.0" prefWidth="154.0" style="-fx-background-radius: 1000; -fx-background-color: #6E8978;" text="DELETE ACCOUNT ">
+         <font>
+            <Font name="HoboStd" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="editButton" layoutX="236.0" layoutY="333.0" mnemonicParsing="false" onAction="#navigateToEdit" prefHeight="101.0" prefWidth="154.0" style="-fx-background-radius: 1000; -fx-background-color: #6E8978;" text="Edit Account">
+         <font>
+            <Font name="HoboStd" size="12.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Screenshot_7.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="176.0" fitWidth="232.0" layoutX="475.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Screenshot_2.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" graphicTextGap="8.0" layoutX="43.0" layoutY="256.0" prefHeight="47.0" prefWidth="346.0" text="Would you like to .." textFill="#184e0c">
+         <font>
+            <Font name="HoboStd" size="36.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

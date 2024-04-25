@@ -1,0 +1,25 @@
+.button {
+    -fx-background-color: #2196F3; /* Blue shade */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.button:hover {
+    -fx-background-color: #1976D2; /* Darker blue when hovered */
+    -fx-cursor: hand; /* Changes cursor to hand when hovered */
+}
+
+.button:pressed {
+    -fx-background-color: #0D47A1; /* Even darker shade when pressed */
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.3) , 5, 0.0 , 0 , 1 );
+}
+
+.button:disabled {
+    -fx-background-color: #BBDEFB; /* Light blue for disabled state */
+    -fx-text-fill: #9E9E9E;
+}
