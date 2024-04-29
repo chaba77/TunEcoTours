@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.controllers.Dashboard">
+   <children>
+      <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <BorderPane layoutX="14.0" prefHeight="600.0" prefWidth="1100.0" styleClass="semi-top-form" stylesheets="@StyleBack.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <AnchorPane prefHeight="35.0" prefWidth="1100.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutY="3.0" prefHeight="35.0" prefWidth="1100.0" styleClass="top-form" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0">
+                           <children>
+                              <Text layoutX="47.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tuneco Tours" />
+                              <Button fx:id="close" layoutX="1023.0" layoutY="6.0" mnemonicParsing="false" onAction="#close" prefHeight="24.0" prefWidth="57.0" styleClass="close" stylesheets="@StyleBack.css" text="x" textAlignment="CENTER" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="4.0">
+                                 <font>
+                                    <Font name="System Bold" size="10.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="minimize" layoutX="970.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimize" prefHeight="24.0" prefWidth="50.0" styleClass="minimize" stylesheets="@StyleBack.css" text="🗕" textAlignment="CENTER" AnchorPane.topAnchor="4.0" />
+                              <Button fx:id="maximize" layoutX="902.0" layoutY="5.0" mnemonicParsing="false" onAction="#maximize" styleClass="minimize" stylesheets="@StyleBack.css" text="|_|" />
+                           </children>
+                           <stylesheets>
+                              <URL value="@StyleBack.css" />
+                              <URL value="@StyleBack.css" />
+                           </stylesheets>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </top>
+               <left>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="-29.0" layoutY="166.0" prefHeight="564.8" prefWidth="200.0" styleClass="nav-form" stylesheets="@StyleBack.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label layoutX="58.0" layoutY="90.0" text="Welcome" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="72.0" layoutY="128.0" text="UserName" textFill="#219a6a" />
+                              <Line endX="59.49998474121094" layoutX="120.0" layoutY="163.0" startX="-100.0" stroke="WHITE" />
+                              <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="71.0" layoutY="23.2" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="481.59999999999997" AnchorPane.leftAnchor="71.0" AnchorPane.rightAnchor="69.80000000000001" AnchorPane.topAnchor="23.2">
+                                 <image>
+                                    <Image url="@../img/u1.png" />
+                                 </image>
+                              </ImageView>
+                              <Button fx:id="Dashboard_btn" layoutX="11.0" layoutY="196.0" mnemonicParsing="false" onAction="#Dashboard_btn" prefHeight="35.0" prefWidth="180.0" styleClass="nav-btnnn" stylesheets="@StyleBack.css" text="Dashboard" />
+                              <Button fx:id="eventcrud_btn" layoutX="10.0" layoutY="246.0" mnemonicParsing="false" onAction="#eventcrud_btn" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Events" />
+                              <Button fx:id="GererCom_btn" layoutX="10.0" layoutY="292.0" mnemonicParsing="false" onAction="#GererCom_btn" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Commande" />
+
+                              <Button layoutX="10.0" layoutY="340.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Exemple" />
+
+
+                              <Button fx:id="logout" layoutX="14.0" layoutY="526.0" mnemonicParsing="false" stylesheets="@StyleBack.css" text="logout">
+                                 <styleClass>
+                                    <String fx:value="logout" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane fx:id="home_form" layoutX="73.0" layoutY="83.0" prefHeight="565.6" prefWidth="898.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="22.0" layoutY="22.0" prefHeight="522.0" prefWidth="863.0" stylesheets="@StyleBack.css">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <AnchorPane prefHeight="166.0" prefWidth="863.0" stylesheets="@StyleBack.css">
+                                       <styleClass>
+                                          <String fx:value="white-bg" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                       <children>
+                                          <AnchorPane layoutX="24.0" layoutY="17.0" prefHeight="131.0" prefWidth="238.0" styleClass="cardinit" stylesheets="@StyleBack.css">
+                                             <children>
+                                                <Label fx:id="totalEvent" alignment="CENTER" layoutX="29.0" layoutY="98.0" prefHeight="18.0" prefWidth="171.0" text="Label" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font></Label>
+                                                <ImageView fitHeight="61.0" fitWidth="61.0" layoutX="84.0" layoutY="14.0">
+                                                   <image>
+                                                      <Image url="@../img/event-tot.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children></AnchorPane>
+                                          <AnchorPane layoutX="312.0" layoutY="17.0" prefHeight="131.0" prefWidth="238.0" styleClass="cardinit" stylesheets="@StyleBack.css">
+                                             <children>
+                                                <Label fx:id="totalParticipant" alignment="CENTER" layoutX="33.0" layoutY="98.0" prefHeight="18.0" prefWidth="171.0" text="Label" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <ImageView fitHeight="63.0" fitWidth="63.0" layoutX="87.0" layoutY="14.0">
+                                                   <image>
+                                                      <Image url="@../img/perso-tot.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children></AnchorPane>
+                                          <AnchorPane layoutX="597.0" layoutY="17.0" prefHeight="131.0" prefWidth="238.0" styleClass="cardinit" stylesheets="@StyleBack.css">
+                                             <children>
+                                                <Label fx:id="totalComment" alignment="CENTER" layoutX="33.0" layoutY="98.0" prefHeight="18.0" prefWidth="171.0" text="Label" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="82.0" layoutY="14.0">
+                                                   <image>
+                                                      <Image url="@../img/comment-tot.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children></AnchorPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
