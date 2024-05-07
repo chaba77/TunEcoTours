@@ -9,12 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="448.0" prefWidth="704.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controles.home">
    <children>
-      <Label alignment="CENTER" graphicTextGap="8.0" layoutX="188.0" layoutY="134.0" prefHeight="47.0" prefWidth="141.0" text="HELLO" textFill="#184e0c">
-         <font>
-            <Font name="HoboStd" size="36.0" />
-         </font>
-      </Label>
-      <Label fx:id="emailLabel" layoutX="354.0" layoutY="139.0" prefHeight="36.0" prefWidth="346.0" text="email" textFill="#6e8978">
+      <Label fx:id="emailLabel" layoutX="189.0" layoutY="155.0" prefHeight="36.0" prefWidth="346.0" text="email" textFill="#6e8978">
          <font>
             <Font name="HoboStd" size="24.0" />
          </font></Label>
@@ -47,5 +42,6 @@
             <Font name="HoboStd" size="36.0" />
          </font>
       </Label>
+      <ImageView fx:id="avatarImageView" fitHeight="91.0" fitWidth="118.0" layoutX="293.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>

@@ -1,7 +1,10 @@
 package controles;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,14 +14,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import Enntities.User;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import services.userservice;
+import javafx.scene.image.Image;
 
 import java.io.IOException;
 
 public class AdminController {
-    public TableColumn actionsColumn;
+    public TableColumn<User, Void> actionsColumn;
+     // Assuming you have a VBox layout, add the TextField here
+    @FXML
+    private TextField search; // TextField for search input
     @FXML
     private TableView<User> usersTable;
     @FXML
@@ -30,7 +38,10 @@ public class AdminController {
     @FXML
     private TableColumn<User, Integer> verifiedColumn;
 
+
     private userservice userService;
+    private FilteredList<User> filteredData;
+
 
     public AdminController() {
         userService = new userservice(); // Assume UserService handles all user-related operations
@@ -38,17 +49,58 @@ public class AdminController {
 
     @FXML
     private void initialize() {
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
         rolesColumn.setCellValueFactory(new PropertyValueFactory<>("roles"));
         verifiedColumn.setCellValueFactory(new PropertyValueFactory<>("is_verified"));
         setupActionsColumn();
+
         loadUsers();
+        setupSearchField();
     }
+
+
+    private void setupSearchField() {
+        search.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(user -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (user.getEmail().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }
+                for (String role : user.getRoles()) { // Assuming getRoles returns List<String>
+                    if (role.toLowerCase().contains(lowerCaseFilter)) {
+                        return true;
+                    }
+                }
+                return false;
+            });
+        });
+    }
+
+
+
+
     @FXML
+    private void handleSortUsers(ActionEvent event) {
+        if (!filteredData.isEmpty()) {
+            SortedList<User> sortedUsers = new SortedList<>(filteredData);
+            // Example sorting by email, switch criteria as needed
+            sortedUsers.setComparator((user1, user2) -> user1.getEmail().compareToIgnoreCase(user2.getEmail()));
+            usersTable.setItems(sortedUsers);
+        }
+    }
+
+
     private void loadUsers() {
         ObservableList<User> users = FXCollections.observableArrayList(userService.getAllUsers());
-        usersTable.setItems(users);
+        filteredData = new FilteredList<>(users, p -> true);
+
+        SortedList<User> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(usersTable.comparatorProperty());
+        usersTable.setItems(sortedData);
     }
     @FXML
     public void deleteUser(int userId) {
@@ -84,10 +136,8 @@ public class AdminController {
     }
 
     private void handleDeleteAction(User user, TableRow<User> tableRow) {
-        usersTable.getItems().remove(user);
-        deleteUser(user.getId());
-        loadUsers();
-
+        userService.deleteUser(user.getId()); // First, attempt to delete the user from the backend or service layer.
+        loadUsers(); // Reload the users from the backend to the table, ensures that the ObservableList is in sync with backend state.
     }
 
     private void handleUpdateAction(User user, TableRow<User> tableRow) {

@@ -8,15 +8,16 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="448.0" prefWidth="704.0" style="-fx-background-color: #E0E0E0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controles.login">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="1089.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controles.login">
    <children>
-      <ImageView fitHeight="457.0" fitWidth="458.0" layoutX="-7.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="457.0" fitWidth="607.0" layoutX="-7.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@./background.jpg" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" graphicTextGap="8.0" layoutX="521.0" layoutY="37.0" prefHeight="47.0" prefWidth="101.0" text="Login" textFill="#184e0c">
+      <Label alignment="CENTER" graphicTextGap="8.0" layoutX="653.0" layoutY="32.0" prefHeight="47.0" prefWidth="101.0" text="Login" textFill="#184e0c">
          <font>
             <Font name="HoboStd" size="36.0" />
          </font>
@@ -37,11 +38,17 @@
             <Font name="HoboStd" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="RegisterButton" layoutX="517.0" layoutY="388.0" mnemonicParsing="false" onAction="#NavigateToRegisterPage" prefHeight="14.0" prefWidth="115.0" style="-fx-background-color: #E0E0E0;" text="I dont have an account" textFill="#245e39">
+      <Button fx:id="RegisterButton" layoutX="588.0" layoutY="388.0" mnemonicParsing="false" onAction="#NavigateToRegisterPage" prefHeight="14.0" prefWidth="115.0" style="-fx-background-color: #E0E0E0;" text="I dont have an account" textFill="#245e39">
          <font>
             <Font name="HoboStd" size="10.0" />
          </font>
       </Button>
       <PasswordField fx:id="PasswordText" layoutX="507.0" layoutY="310.0" />
+      <Button fx:id="ForgetPasswordButton" layoutX="453.0" layoutY="390.0" mnemonicParsing="false" onAction="#NavigateToForgetPasswordPage" prefHeight="14.0" prefWidth="115.0" style="-fx-background-color: #E0E0E0;" text="Forget password" textFill="#245e39">
+         <font>
+            <Font name="HoboStd" size="10.0" />
+         </font>
+      </Button>
+      <WebView fx:id="captcha" layoutX="789.0" layoutY="55.0" prefHeight="402.0" prefWidth="297.0" />
    </children>
 </Pane>

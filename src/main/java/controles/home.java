@@ -9,10 +9,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 import javafx.event.ActionEvent;
 import services.userservice;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -21,9 +24,12 @@ public class home {
     private Label emailLabel;
     @FXML
     private Button editButton;
+    @FXML
+    private ImageView avatarImageView;
 
     private userservice userService = new userservice();  // Ensure userService is initialized appropriately
     public void initialize() {
+        updateAvatar();
     }
 
 
@@ -63,6 +69,19 @@ public class home {
             showAlert("Delete Account", "Failed to delete the account. Please try again later.");
         }
     }
+
+    private void updateAvatar() {
+        String email = emailLabel.getText();
+        if (!email.isEmpty()) {
+            //String avatarUrl = "https://avatars.dicebear.com/api/bottts/" + email + ".png";
+            String avatarUrl = "https://api.dicebear.com/8.x/micah/png?seed="+email;
+            Image image = new Image(avatarUrl);
+            avatarImageView.setImage(image);
+        }
+    }
+
+
+
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);

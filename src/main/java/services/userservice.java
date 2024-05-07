@@ -11,6 +11,7 @@ import com.google.gson.Gson;
 
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
+
 import at.favre.lib.crypto.bcrypt.BCrypt.Hasher;
 import at.favre.lib.crypto.bcrypt.BCrypt.Version;
 
@@ -97,6 +98,24 @@ public class userservice {
             stmt.setString(1, newEmail);
             stmt.setString(2, currentEmail);
             stmt.executeUpdate();
+        }
+    }
+    public void updateUserPassword(String currentEmail, String plainNewPassword) throws SQLException {
+        Hasher argon2Hasher = BCrypt.with(Version.VERSION_2A); // Use Argon2 with bcrypt compatibility
+        String hashedPassword = argon2Hasher.hashToString(12, plainNewPassword.toCharArray());
+
+        // SQL to update the password
+        String sql = "UPDATE user SET password = ? WHERE email = ?";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, hashedPassword);
+            stmt.setString(2, currentEmail);
+            int affectedRows = stmt.executeUpdate();
+
+            // Check if the update was successful
+            if (affectedRows == 0) {
+                throw new SQLException("Updating password failed, no rows affected.");
+            }
         }
     }
     public List<User> getAllUsers() {

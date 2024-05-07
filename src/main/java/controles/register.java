@@ -1,14 +1,12 @@
 package controles;
 
+import com.google.zxing.WriterException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import services.userservice;
 
@@ -27,11 +25,24 @@ public class register {
 
     @FXML
     private Button registerButton;
+    @FXML
+    private Label passwordComp;
     private userservice userService;
     public register() {
         userService = new userservice(); // Initialize userservice
     }
 // Inject userservice
+
+    public void initialize() {
+        // Ajouter un écouteur au champ de mot de passe pour calculer la complexité
+        PasswordText.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Vérifier la complexité du mot de passe
+            String passwordComplexity = checkPasswordComplexity(newValue);
+            // Mettre à jour le Label avec la complexité du mot de passe
+            passwordComp.setText("Complexité du mot de passe : " + passwordComplexity);
+        });
+    }
+
 
     void showAlert(Alert.AlertType alertType, String title, String content) {
         Alert alert = new Alert(alertType);
@@ -46,8 +57,19 @@ public class register {
         String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
         return email.matches(emailRegex);
     }
+    public static String checkPasswordComplexity(String password) {
+        if (password.length() < 8) {
+            return "Faible";
+        } else if (password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")) {
+            return "Fort";
+        } else {
+            return "Moyen";
+        }
+    }
 
-    @FXML
+
+
+@FXML
     void Register(ActionEvent event) {
 
         if (!isValidEmail(Email.getText())) {
@@ -73,6 +95,10 @@ public class register {
             // Provide meaningful feedback to the user
             System.err.println("Registration failed. Please try again later.");
             e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (WriterException e) {
+            throw new RuntimeException(e);
         }
     }
     @FXML
